@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>West-Coast Gota Plant – Tool Access</title>
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+
+<!-- LOADING -->
+<section id="loadingView" class="center-screen">
+  <div class="loader"><span></span><span></span><span></span></div>
+</section>
+
+<!-- LOGIN -->
+<section id="loginView" class="auth hidden">
+  <aside class="auth-brand">
+    <div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div>
+    <div class="auth-brand-inner">
+      <div class="logo-plate"><img src="assets/logo.webp" alt="West-Coast Pharmaceutical Works Ltd."></div>
+      <h1 class="brand-title"><span id="loginPlant">Gota Plant</span><br>tool access</h1>
+      <p class="brand-sub">One sign-in for BMR, process validation, CDP and every other plant tool your admin gives you.</p>
+      <div class="rule"></div>
+      <ul class="brand-points">
+        <li>Each person sees only their assigned tools</li>
+        <li>Admins add, edit and remove tools and users</li>
+        <li>Block access or reset passwords in seconds</li>
+      </ul>
+    </div>
+  </aside>
+  <div class="auth-form-side">
+    <form id="loginForm" class="auth-card" autocomplete="on">
+      <div class="logo-plate mobile-only"><img src="assets/logo.webp" alt="West-Coast Pharmaceutical Works Ltd."></div>
+      <h2>Welcome back</h2>
+      <p class="muted">Sign in with the ID your plant admin gave you.</p>
+      <label>User ID<input type="text" id="loginId" autocomplete="username" required></label>
+      <label>Password
+        <span class="pw-field"><input type="password" id="loginPw" autocomplete="current-password" required><button type="button" class="pw-toggle" data-target="loginPw" aria-label="Show password">Show</button></span>
+      </label>
+      <p class="err" id="loginErr" role="alert"></p>
+      <button class="btn primary block" type="submit"><span>Sign in</span></button>
+      <p class="muted small center">Forgot your password? Ask the plant admin to reset it.</p>
+    </form>
+  </div>
+</section>
+
+<!-- FIRST RUN -->
+<section id="setupView" class="auth hidden">
+  <aside class="auth-brand">
+    <div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div>
+    <div class="auth-brand-inner">
+      <div class="logo-plate"><img src="assets/logo.webp" alt="West-Coast Pharmaceutical Works Ltd."></div>
+      <h1 class="brand-title">Set up<br>Gota Plant</h1>
+      <p class="brand-sub">No admin account exists yet. Create the first one to start adding tools and users.</p>
+      <div class="rule"></div>
+    </div>
+  </aside>
+  <div class="auth-form-side">
+    <form id="setupForm" class="auth-card">
+      <h2>Create admin</h2>
+      <label>Admin name<input type="text" id="setupName" value="Gota Plant Admin" required></label>
+      <label>Admin user ID<input type="text" id="setupId" required></label>
+      <label>Password<input type="password" id="setupPw" minlength="6" required></label>
+      <p class="err" id="setupErr" role="alert"></p>
+      <button class="btn primary block" type="submit">Create admin</button>
+    </form>
+  </div>
+</section>
+
+<!-- APP -->
+<div id="appView" class="shell hidden">
+  <aside class="sidebar" id="sidebar">
+    <div class="side-logo"><div class="logo-plate"><img src="assets/logo.webp" alt="West-Coast Pharmaceutical Works Ltd."></div></div>
+    <div class="side-plant"><strong id="sidePlant">Gota Plant</strong><span id="sideLoc"></span></div>
+    <nav class="side-nav" id="sideNav">
+      <button data-tab="dashboard" class="active"><svg viewBox="0 0 24 24"><path d="M3 3h8v8H3zM13 3h8v5h-8zM13 10h8v11h-8zM3 13h8v8H3z"/></svg>Dashboard</button>
+      <button data-tab="tools" data-admin><svg viewBox="0 0 24 24"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.2L3 17.8V21h3.2l6.3-6.3a4 4 0 0 0 5.2-5.4l-2.6 2.6-2.4-.6-.6-2.4z"/></svg>Manage tools</button>
+      <button data-tab="users" data-admin><svg viewBox="0 0 24 24"><path d="M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8zm-7 10a7 7 0 0 1 14 0zM17 11a3 3 0 1 0 0-6M19 21h3a5 5 0 0 0-4-4.9"/></svg>Manage users</button>
+      <button data-tab="settings" data-admin><svg viewBox="0 0 24 24"><path d="M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm8.6-3a8.6 8.6 0 0 0-.1-1.3l2-1.6-2-3.4-2.4 1a8 8 0 0 0-2.2-1.3L15.5 3h-4l-.4 2.4a8 8 0 0 0-2.2 1.3l-2.4-1-2 3.4 2 1.6a8.6 8.6 0 0 0 0 2.6l-2 1.6 2 3.4 2.4-1a8 8 0 0 0 2.2 1.3l.4 2.4h4l.4-2.4a8 8 0 0 0 2.2-1.3l2.4 1 2-3.4-2-1.6c.1-.4.1-.9.1-1.3z"/></svg>Plant settings</button>
+    </nav>
+    <div class="side-user">
+      <div class="avatar" id="avatar">BP</div>
+      <div class="side-user-text"><strong id="whoName"></strong><span id="whoRole"></span></div>
+    </div>
+    <div class="side-actions">
+      <button class="btn ghost small" id="pwBtn" type="button">Change password</button>
+      <button class="btn ghost small" id="logoutBtn" type="button">Sign out</button>
+    </div>
+  </aside>
+
+  <main class="content">
+    <header class="page-head">
+      <button class="menu-btn" id="menuBtn" aria-label="Open menu"><svg viewBox="0 0 24 24"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button>
+      <div>
+        <h1 id="pageTitle">Dashboard</h1>
+        <p class="muted" id="pageSub"></p>
+      </div>
+      <div class="head-actions" id="headActions"></div>
+    </header>
+
+    <!-- dashboard -->
+    <section class="view" id="view-dashboard">
+      <div class="stats" id="stats"></div>
+      <div class="section-title"><h2>Your tools</h2><input type="search" id="toolSearch" placeholder="Search tools" aria-label="Search tools"></div>
+      <div class="tool-grid" id="myTools"></div>
+    </section>
+
+    <!-- tools -->
+    <section class="view hidden" id="view-tools">
+      <div class="card">
+        <h3>Add a tool</h3>
+        <form id="addToolForm" class="form-grid">
+          <label>Short code<input type="text" id="tCode" maxlength="6" placeholder="BMR" required></label>
+          <label>Tool name<input type="text" id="tName" placeholder="Batch Manufacturing Record" required></label>
+          <label>Link<input type="url" id="tUrl" placeholder="https://…"></label>
+          <label>Description<input type="text" id="tDesc" placeholder="What the tool does"></label>
+          <button class="btn primary" type="submit">Add tool</button>
+        </form>
+        <p class="err" id="toolErr"></p>
+      </div>
+      <div class="table-card"><table>
+        <thead><tr><th>Tool</th><th>Link</th><th>Users</th><th></th></tr></thead>
+        <tbody id="toolRows"></tbody>
+      </table></div>
+    </section>
+
+    <!-- users -->
+    <section class="view hidden" id="view-users">
+      <div class="card">
+        <h3>Add a user</h3>
+        <form id="addUserForm" class="form-grid">
+          <label>Full name<input type="text" id="uName" required></label>
+          <label>User ID<input type="text" id="uId" required autocomplete="off"></label>
+          <label>Password<input type="text" id="uPw" minlength="6" required autocomplete="off"></label>
+          <label>Role<select id="uRole"><option value="user">User</option><option value="admin">Admin</option></select></label>
+          <fieldset class="span-all"><legend>Tool access</legend><div class="checks" id="uTools"></div></fieldset>
+          <button class="btn primary" type="submit">Add user</button>
+        </form>
+        <p class="err" id="userErr"></p>
+      </div>
+      <div class="table-card"><table>
+        <thead><tr><th>User</th><th>Role</th><th>Tool access</th><th>Status</th><th></th></tr></thead>
+        <tbody id="userRows"></tbody>
+      </table></div>
+    </section>
+
+    <!-- settings -->
+    <section class="view hidden" id="view-settings">
+      <div class="card narrow">
+        <h3>Plant settings</h3>
+        <form id="plantForm" class="stack">
+          <label>Plant name<input type="text" id="plantInput" required></label>
+          <label>Location line<input type="text" id="plantLoc"></label>
+          <div><button class="btn primary" type="submit">Save settings</button></div>
+        </form>
+      </div>
+      <div class="card narrow">
+        <h3>Backup</h3>
+        <p class="muted">Download all users, tools and settings as a file, or restore from one.</p>
+        <div class="row-actions">
+          <button class="btn ghost" id="exportBtn" type="button">Download backup</button>
+          <label class="btn ghost file-btn">Restore backup<input type="file" id="importFile" accept="application/json"></label>
+        </div>
+      </div>
+      <p class="muted small" id="modeNote"></p>
+    </section>
+  </main>
+  <div class="scrim" id="scrim"></div>
+</div>
+
+<!-- dialogs -->
+<dialog id="userDlg">
+  <form id="userDlgForm" method="dialog">
+    <h2>Edit user</h2>
+    <p class="muted small" id="eUid"></p>
+    <label>Full name<input type="text" id="eName" required></label>
+    <div class="two">
+      <label>Role<select id="eRole"><option value="user">User</option><option value="admin">Admin</option></select></label>
+      <label>Status<select id="eActive"><option value="1">Active</option><option value="0">Blocked</option></select></label>
+    </div>
+    <label>New password <span class="muted small">(leave blank to keep)</span><input type="text" id="ePw" minlength="6" autocomplete="off"></label>
+    <fieldset><legend>Tool access</legend><div class="checks" id="eTools"></div></fieldset>
+    <p class="err" id="eErr"></p>
+    <div class="dlg-actions"><button class="btn ghost" type="button" data-close>Cancel</button><button class="btn primary" type="submit">Save changes</button></div>
+  </form>
+</dialog>
+
+<dialog id="toolDlg">
+  <form id="toolDlgForm" method="dialog">
+    <h2>Edit tool</h2>
+    <div class="two">
+      <label>Short code<input type="text" id="etCode" maxlength="6" required></label>
+      <label>Tool name<input type="text" id="etName" required></label>
+    </div>
+    <label>Link<input type="url" id="etUrl" placeholder="https://…"></label>
+    <label>Description<input type="text" id="etDesc"></label>
+    <p class="err" id="etErr"></p>
+    <div class="dlg-actions"><button class="btn ghost" type="button" data-close>Cancel</button><button class="btn primary" type="submit">Save changes</button></div>
+  </form>
+</dialog>
+
+<dialog id="pwDlg">
+  <form id="pwForm" method="dialog">
+    <h2>Change password</h2>
+    <label>Current password<input type="password" id="pwOld" required autocomplete="current-password"></label>
+    <label>New password<input type="password" id="pwNew" minlength="6" required autocomplete="new-password"></label>
+    <p class="err" id="pwErr"></p>
+    <div class="dlg-actions"><button class="btn ghost" type="button" data-close>Cancel</button><button class="btn primary" type="submit">Change password</button></div>
+  </form>
+</dialog>
+
+<dialog id="confirmDlg">
+  <form method="dialog">
+    <h2 id="cTitle">Are you sure?</h2>
+    <p class="muted" id="cText"></p>
+    <div class="dlg-actions"><button class="btn ghost" value="no">Cancel</button><button class="btn danger" value="yes" id="cYes">Remove</button></div>
+  </form>
+</dialog>
+
+<div class="toasts" id="toasts" aria-live="polite"></div>
+
+<script src="config.js"></script>
+<script src="assets/app.js"></script>
+</body>
+</html>
